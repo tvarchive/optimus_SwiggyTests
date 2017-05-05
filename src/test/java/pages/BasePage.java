@@ -1,6 +1,8 @@
 package pages;
 
+import builders.FoodItemBuilder;
 import builders.RestaurantBuilder;
+import entities.FoodItem;
 import entities.Restaurant;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
@@ -26,6 +28,13 @@ public class BasePage {
 
     @FindBy(id = "in.swiggy.android:id/restaurant_layout")
     protected List<WebElement> restaurants;
+
+    @FindBy(id = "in.swiggy.android:id/fragment_restaurant_menu_layout_menu_items_recycler_view")
+    private List<WebElement> menu;
+
+    public BasePage() {
+
+    }
 
     public BasePage(AppiumDriver driver) {
         this.driver = driver;
@@ -374,8 +383,12 @@ public class BasePage {
         return childElement.findElement(parentElement).getText();
     }
 
-    protected void refreshPage(){
-        PageFactory.initElements(driver,this);
+    protected WebElement findElement(WebElement parentElement, By childElement) {
+        return parentElement.findElement(childElement);
+    }
+
+    protected void refreshPage() {
+        PageFactory.initElements(driver, this);
     }
 
     public void clickBy(By by) {
@@ -427,7 +440,28 @@ public class BasePage {
         return false;
     }
 
-    Restaurant findARestaurant(int count){
+    FoodItem selectAnItem(int count) {
+        WebElement foodItemEle = getFoodItem(count);
+        waitForElementToBeClickable(Bys.incrementButton);
+        findElement(foodItemEle, Bys.incrementButton).click();
+        waitForTextToBePresentInElement(Bys.quantity,"1");
+        return buildFoodItem(foodItemEle);
+    }
+
+    private FoodItem buildFoodItem(WebElement foodItem) {
+        return new FoodItemBuilder()
+                .withName(getElementText(foodItem, Bys.itemName))
+                .withPrice(getElementText(foodItem, Bys.itemPrice))
+                .withQuantity(getElementText(foodItem, Bys.quantity))
+                .build();
+    }
+
+    private WebElement getFoodItem(int count) {
+        WebElement foodItem = menu.get(count);
+        return foodItem;
+    }
+
+    Restaurant findARestaurant(int count) {
         WebElement restaurantEle = getRestaurantElement(count);
         return buildRestaurant(restaurantEle);
     }
@@ -441,9 +475,9 @@ public class BasePage {
                 .build();
     }
 
-    protected WebElement getRestaurantElement(int restaurantCount){
-        WebElement res = restaurants.get(restaurantCount);
-        return res;
+    protected WebElement getRestaurantElement(int restaurantCount) {
+        WebElement restaurant = restaurants.get(restaurantCount);
+        return restaurant;
     }
 
     protected interface Bys {
@@ -452,5 +486,13 @@ public class BasePage {
         By restaurantCuisine = By.id(app_package_name + "restaurant_cuisines");
         By restaurantRating = By.id(app_package_name + "restaurant_rating");
         By restaurantDeliveryTime = By.id(app_package_name + "restaurant_delivery_time");
+        By restaurantChainOption = By.id(app_package_name+"chain_layout");
+        By restaurantChainsFound = By.id(app_package_name + "restaurant_chains_found");
+        By itemPrice = By.id(app_package_name + "recommended_menu_item_layout_item_price");
+        By itemName = By.id(app_package_name + "recommended_menu_item_layout_item_name");
+        By quantity = By.id(app_package_name + "count_text");
+        By decrementButton = By.id(app_package_name + "decrement_button");
+        By incrementButton = By.id(app_package_name + "increment_button");
+
     }
 }

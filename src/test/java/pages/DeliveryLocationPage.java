@@ -18,6 +18,12 @@ public class DeliveryLocationPage extends BasePage {
     @FindBy(xpath = "//android.widget.LinearLayout[@index=1]")
     private WebElement appropriateLocation;
 
+    private String deliveryType;
+
+    public DeliveryLocationPage() {
+
+    }
+
     public DeliveryLocationPage(AppiumDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -37,5 +43,13 @@ public class DeliveryLocationPage extends BasePage {
     public void selectAppropriateLocation(){
         waitForElementToBeClickable(appropriateLocation);
         appropriateLocation.click();
+    }
+
+    public String getDeliveryType() {
+        return deliveryType;
+    }
+
+    public void setDeliveryType(String deliveryType) {
+        this.deliveryType = deliveryType;
     }
 }

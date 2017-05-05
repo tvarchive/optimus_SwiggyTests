@@ -18,12 +18,17 @@ public class DeliveryLocationSteps extends BaseSteps {
 
     @And("^I want to enter my location manually$")
     public void iWantToEnterMyLocationManually(){
-        new DeliveryLocationPage(getDriver()).selectManualLocation();
+       DeliveryLocationPage deliveryLocationPage =  new DeliveryLocationPage(getDriver());
+       pageBank.addPage(deliveryLocationPage);
+       deliveryLocationPage.selectManualLocation();
+//       deliveryLocationPage.setDeliveryType("Pickup");
     }
 
     @And("^I enter my location as ([^\"]*) in the input box and select the appropriate location$")
     public void iEnterMyLocationAsTextInTheInputBox(String location){
-        new DeliveryLocationPage(getDriver()).enterDeliveryLocation(location);
-        new DeliveryLocationPage(getDriver()).selectAppropriateLocation();
+//        String deliveryType = pageBank.getPage(DeliveryLocationPage.class).getDeliveryType();
+//        System.out.println(deliveryType);
+        pageBank.getPage(DeliveryLocationPage.class).enterDeliveryLocation(location);
+        pageBank.getPage(DeliveryLocationPage.class).selectAppropriateLocation();
     }
 }
