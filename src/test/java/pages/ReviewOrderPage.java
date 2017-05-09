@@ -40,15 +40,14 @@ public class ReviewOrderPage extends BasePage {
     @FindBy(id = "in.swiggy.android:id/neutralLayout")
     private WebElement deliveryFeeOkButton;
 
-    @FindBy(id = "in.swiggy.android:id/item_address_card_container")
-    private WebElement addressConfirm;
+    @FindBy(id = "in.swiggy.android:id/address_select_checkbox")
+    private WebElement addressSelect;
 
-    @FindBy(id = "in.swiggy.android:id/activity_review_cart_proceed_button")
+    @FindBy(id = "in.swiggy.android:id/proceed_button")
     private WebElement reviewCartProceedBtn;
 
     @FindBy(id = "in.swiggy.android:id/fragment_create_address_pick_map_position_button")
     private WebElement pickLocation;
-
 
     private AppiumDriver driver;
 
@@ -91,13 +90,12 @@ public class ReviewOrderPage extends BasePage {
     }
 
     public void selectAddress() {
-//        scrollDownTo(By.id("in.swiggy.android:id/activity_review_cart_proceed_button"));
-//        waitForElementToBeVisible(reviewCartProceedBtn);
-        addressConfirm.click();
+        waitForElementToBeVisible(addressSelect);
+        addressSelect.click();
     }
 
     public void proceedToPayment() {
-        scrollDownTo(By.id("in.swiggy.android:id/activity_review_cart_proceed_button"));
+        scrollDownTo(By.id("in.swiggy.android:id/proceed_button"));
         waitForElementToBeClickable(reviewCartProceedBtn);
         reviewCartProceedBtn.click();
     }

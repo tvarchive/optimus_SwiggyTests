@@ -2,9 +2,12 @@ package pages;
 
 import entities.Restaurant;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class HomePage extends BasePage {
 
@@ -32,9 +35,8 @@ public class HomePage extends BasePage {
         this.driver = driver;
     }
 
-    public void chooseARestaurant(){
+    public void chooseARestaurant() {
         try {
-            waitForElementToBeVisible(customToolbar);
             scrollDownAndFindARestaurant();
         } catch (Exception e) {
             scrollDownAndFindARestaurant();
@@ -42,45 +44,44 @@ public class HomePage extends BasePage {
     }
 
     private void scrollDownAndFindARestaurant() {
-        scrollDown();
         System.out.println("Choosing a restaurant");
-        restaurant = findARestaurant(0);
-        System.out.println("Found a restaurant -- " + restaurant.getName());
-        System.out.println("With rating -- " + restaurant.getRating());
-        System.out.println("With cuisines -- " + restaurant.getRestaurantCuisines());
-        System.out.println("With delivery time -- " + restaurant.getDeliveryTime());
+        scrollDown();
+//        restaurant = findARestaurant(0);
+//        System.out.println("Found a restaurant -- " + restaurant.getName());
+//        System.out.println("With rating -- " + restaurant.getRating());
+//        System.out.println("With cuisines -- " + restaurant.getRestaurantCuisines());
+//        System.out.println("With delivery time -- " + restaurant.getDeliveryTime());
     }
 
     public void tapOnRestaurant() {
         try {
-            if (findElement(getRestaurantElement(0), Bys.restaurantChainsFound).isEnabled()) {
-                findElement(getRestaurantElement(0), Bys.restaurantChainsFound).click();
-                findElement(getRestaurantElement(0), Bys.restaurantChainOption).click();
-            }
-            else{
-                findElement(getRestaurantElement(0), Bys.restaurantName).click();
-            }
+            waitForElementToBeVisible(By.id("in.swiggy.android:id/restaurant_layout"));
+            driver.findElement(By.id("in.swiggy.android:id/restaurant_layout")).click();
+//            findElement(getRestaurantElement(0), Bys.restaurantName).click();
         } catch (Exception e) {
-            findElement(getRestaurantElement(0), Bys.restaurantName).click();
+            driver.findElement(By.id("in.swiggy.android:id/restaurant_chains_found")).click();
+            driver.findElement(By.id("in.swiggy.android:id/chain_layout")).click();
+//            findElement(getRestaurantElement(0), Bys.restaurantChainsFound).click();
+//            findElement(getRestaurantElement(0), Bys.restaurantChainOption).click();
         }
     }
 
-    public void tapOnAccount(){
+    public void tapOnAccount() {
         waitForElementToBeClickable(accountButton);
         accountButton.click();
     }
 
-    public void tapOnLoginLogoutButton(){
+    public void tapOnLoginLogoutButton() {
         waitForElementToBeClickable(login_logout_button);
         login_logout_button.click();
     }
 
-    public void tapOnRestaurantButton(){
+    public void tapOnRestaurantButton() {
         waitForElementToBeClickable(restaurantButton);
         restaurantButton.click();
     }
 
-    public void tapOnFilter(){
+    public void tapOnFilter() {
         waitForElementToBeClickable(filter);
         filter.click();
     }

@@ -18,7 +18,6 @@ public class FilterSelectSteps extends BaseSteps {
         new HomePage(getDriver()).tapOnFilter();
         new FiltersPage(getDriver()).sortByRating();
         new FiltersPage(getDriver()).setCostLevel();
-//        new FiltersPage(getDriver()).selectCuisine();
         new FiltersPage(getDriver()).tapOnApplyFilterButton();
         new HomePage(getDriver()).chooseARestaurant();
         new HomePage(getDriver()).tapOnRestaurant();

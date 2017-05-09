@@ -462,6 +462,8 @@ public class BasePage {
     }
 
     Restaurant findARestaurant(int count) {
+        scrollDown();
+//        waitForElementsToBeVisible(restaurants);
         WebElement restaurantEle = getRestaurantElement(count);
         return buildRestaurant(restaurantEle);
     }
@@ -469,9 +471,6 @@ public class BasePage {
     Restaurant buildRestaurant(WebElement restaurant) {
         return new RestaurantBuilder()
                 .withName(getElementText(restaurant, Bys.restaurantName))
-                .withRating(getElementText(restaurant, Bys.restaurantRating))
-                .withRestaurantCuisines(getElementText(restaurant, Bys.restaurantCuisine))
-                .withDeliveryTime(getElementText(restaurant, Bys.restaurantDeliveryTime))
                 .build();
     }
 

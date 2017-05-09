@@ -2,7 +2,7 @@ Feature: Selection of restaurant
   As a user,I want to select a restaurant and food items of my choice
 
   Background:
-    Given I have chosen to order some food online and I provide my location for delivery as AECS layout
+    Given I have chosen to order some food online and I provide my location for delivery as Indiranagar
     And I choose a restaurant
 
   @restaurant-selection
