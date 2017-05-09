@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import io.appium.java_client.AppiumDriver;
 import pages.HomePage;
+import pages.RestaurantPage;
 
 
 public class RestaurantSelectSteps extends BaseSteps {
@@ -12,14 +13,15 @@ public class RestaurantSelectSteps extends BaseSteps {
         return getDriverInstanceFor("foodie");
     }
 
-    @When("^I choose a restaurant of my choice and click on it$")
-    public void iChooseARestaurantOfMyChoiceAndClickOnIt() throws InterruptedException {
+    @And("^I choose a restaurant$")
+    public void iChooseARestaurant(){
         new HomePage(getDriver()).chooseARestaurant();
-        new HomePage(getDriver()).clickOnRestaurant();
+        new HomePage(getDriver()).tapOnRestaurant();
     }
 
-    @And("^I am logged in and I tap on restaurant$")
-    public void iAmLoggedInAndItapOnRestaurant(){
-        new HomePage(getDriver()).clickOnRestaurantButton();
+    @And("^I buy some items and proceed to checkout$")
+    public void iBuySomeItemsAndProceedToCheckout(){
+        new RestaurantPage(getDriver()).chooseAnItem();
+        new RestaurantPage(getDriver()).tapOnCheckoutButton();
     }
 }

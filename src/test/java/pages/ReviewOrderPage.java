@@ -28,8 +28,8 @@ public class ReviewOrderPage extends BasePage {
     @FindBy(id = "in.swiggy.android:id/error_container_action_button")
     private WebElement addNewAddress;
 
-    @FindBy(id = "in.swiggy.android:id/fragment_create_address_pick_map_position_button")
-    private WebElement pickLocation;
+    @FindBy(id = "fragment_create_address_landmark")
+    private WebElement landmark;
 
     @FindBy(id = "in.swiggy.android:id/fragment_create_address_flat_no_et")
     private WebElement address;
@@ -46,6 +46,10 @@ public class ReviewOrderPage extends BasePage {
     @FindBy(id = "in.swiggy.android:id/activity_review_cart_proceed_button")
     private WebElement reviewCartProceedBtn;
 
+    @FindBy(id = "in.swiggy.android:id/fragment_create_address_pick_map_position_button")
+    private WebElement pickLocation;
+
+
     private AppiumDriver driver;
 
     public ReviewOrderPage(AppiumDriver driver) {
@@ -54,18 +58,17 @@ public class ReviewOrderPage extends BasePage {
         this.driver = driver;
     }
 
-    public void clickOnLoginButton() {
+    public void tapOnLoginButton() {
         scrollDownTo(By.id("in.swiggy.android:id/error_container_action_button"));
         waitForElementToBeClickable(loginButton);
         loginButton.click();
     }
 
-    public void clickOnDeliveryFeeOkButton(){
+    public void tapOnDeliveryFeeOkButton() {
         try {
             waitForElementToBeClickable(deliveryFeeOkButton);
             deliveryFeeOkButton.click();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
@@ -82,36 +85,50 @@ public class ReviewOrderPage extends BasePage {
         passwordTextBox.sendKeys(password);
     }
 
-    public void signIn(){
+    public void signIn() {
         waitForElementToBeClickable(passwordSignIn);
         passwordSignIn.click();
     }
 
-    public void selectAddress(){
-        scrollDownTo(By.id("in.swiggy.android:id/activity_review_cart_proceed_button"));
-        waitForElementToBeVisible(reviewCartProceedBtn);
+    public void selectAddress() {
+//        scrollDownTo(By.id("in.swiggy.android:id/activity_review_cart_proceed_button"));
+//        waitForElementToBeVisible(reviewCartProceedBtn);
         addressConfirm.click();
     }
 
-    public void proceedToPayment(){
+    public void proceedToPayment() {
         scrollDownTo(By.id("in.swiggy.android:id/activity_review_cart_proceed_button"));
         waitForElementToBeClickable(reviewCartProceedBtn);
         reviewCartProceedBtn.click();
     }
 
-    public void selectLocation(){
+    public void selectLocation() {
         waitForElementToBeClickable(pickLocation);
         pickLocation.click();
     }
 
-    public void enterBuildingAddress(String add){
+    public void enterBuildingAddress(String buildingAddress) {
         waitForElementToBeVisible(address);
-        address.sendKeys(add);
+        address.sendKeys(buildingAddress);
     }
 
-    public void clickOnSave(){
+    public void tapOnSave() {
         waitForElementToBeClickable(submitAddressButton);
         submitAddressButton.click();
     }
 
+    public void tapOnAddNewAddress() {
+        waitForElementToBeClickable(addNewAddress);
+        addNewAddress.click();
+    }
+
+    public void tapOnPickLocation() {
+        waitForElementToBeClickable(pickLocation);
+        pickLocation.click();
+    }
+
+    public void enterLandmark(String landmark) {
+        waitForElementToBeVisible(this.landmark);
+        this.landmark.sendKeys(landmark);
+    }
 }

@@ -32,16 +32,16 @@ public class HomePage extends BasePage {
         this.driver = driver;
     }
 
-    public void chooseARestaurant() throws InterruptedException {
+    public void chooseARestaurant(){
         try {
             waitForElementToBeVisible(customToolbar);
-            scrollDownAndFindRestaurant();
+            scrollDownAndFindARestaurant();
         } catch (Exception e) {
-            scrollDownAndFindRestaurant();
+            scrollDownAndFindARestaurant();
         }
     }
 
-    private void scrollDownAndFindRestaurant() {
+    private void scrollDownAndFindARestaurant() {
         scrollDown();
         System.out.println("Choosing a restaurant");
         restaurant = findARestaurant(0);
@@ -51,33 +51,36 @@ public class HomePage extends BasePage {
         System.out.println("With delivery time -- " + restaurant.getDeliveryTime());
     }
 
-    public void clickOnRestaurant() {
+    public void tapOnRestaurant() {
         try {
             if (findElement(getRestaurantElement(0), Bys.restaurantChainsFound).isEnabled()) {
                 findElement(getRestaurantElement(0), Bys.restaurantChainsFound).click();
                 findElement(getRestaurantElement(0), Bys.restaurantChainOption).click();
+            }
+            else{
+                findElement(getRestaurantElement(0), Bys.restaurantName).click();
             }
         } catch (Exception e) {
             findElement(getRestaurantElement(0), Bys.restaurantName).click();
         }
     }
 
-    public void clickOnAccount(){
+    public void tapOnAccount(){
         waitForElementToBeClickable(accountButton);
         accountButton.click();
     }
 
-    public void clickOnLoginLogoutButton(){
+    public void tapOnLoginLogoutButton(){
         waitForElementToBeClickable(login_logout_button);
         login_logout_button.click();
     }
 
-    public void clickOnRestaurantButton(){
+    public void tapOnRestaurantButton(){
         waitForElementToBeClickable(restaurantButton);
         restaurantButton.click();
     }
 
-    public void clickOnFilter(){
+    public void tapOnFilter(){
         waitForElementToBeClickable(filter);
         filter.click();
     }

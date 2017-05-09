@@ -2,6 +2,7 @@ package pages;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -58,9 +59,8 @@ public class FiltersPage extends BasePage {
         andhraCuisine.click();
     }
 
-    public void clickOnApplyFilterButton(){
+    public void tapOnApplyFilterButton(){
         waitForElementToBeClickable(applyFilterButton);
         applyFilterButton.click();
     }
-
 }

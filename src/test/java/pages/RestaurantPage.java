@@ -2,6 +2,7 @@ package pages;
 
 import entities.FoodItem;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -53,6 +54,9 @@ public class RestaurantPage extends BasePage {
     public void chooseAnItem() {
         waitForElementToBeVisible(restaurantName);
         scrollDown();
+        if(!driver.findElements(By.id("in.swiggy.android:id/recommended_menu_item_layout_item_out_of_stock_badge")).isEmpty()){
+            scrollDown();
+        }
         System.out.println("Choosing a food item from menu");
         foodItem = selectAnItem(0);
         System.out.println("Found a food item -- " + foodItem.getItemName());
@@ -60,7 +64,7 @@ public class RestaurantPage extends BasePage {
         System.out.println("With quantity -- " + foodItem.getQuantity());
     }
 
-    public void clickOnCheckoutButton(){
+    public void tapOnCheckoutButton(){
         waitForElementToBeVisible(checkoutButton);
         checkoutButton.click();
     }
