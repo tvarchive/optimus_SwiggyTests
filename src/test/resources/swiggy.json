@@ -19,7 +19,8 @@
           "appActivity": "in.swiggy.android.activities.HomeActivity",
           "appPackage": "in.swiggy.android",
           "avdLaunchTimeout": 300000,
-          "useKeystore": false
+          "useKeystore": false,
+          "autoGrantPermissions": true
         }
       },
       "deviceState": {
