@@ -2,9 +2,7 @@ package steps;
 
 import cucumber.api.java.en.And;
 import io.appium.java_client.AppiumDriver;
-import pages.FiltersPage;
-import pages.HomePage;
-import pages.RestaurantPage;
+import pages.*;
 
 public class FilterSelectSteps extends BaseSteps {
 
@@ -19,6 +17,7 @@ public class FilterSelectSteps extends BaseSteps {
         new FiltersPage(getDriver()).sortByRating();
         new FiltersPage(getDriver()).setCostLevel();
         new FiltersPage(getDriver()).tapOnApplyFilterButton();
+        new BasePage(getDriver()).denyPermission();
         new HomePage(getDriver()).chooseARestaurant();
         new HomePage(getDriver()).tapOnRestaurant();
     }

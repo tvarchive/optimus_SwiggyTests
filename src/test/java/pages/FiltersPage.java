@@ -11,28 +11,28 @@ public class FiltersPage extends BasePage {
 
     private AppiumDriver driver;
 
-    @FindBy(id = "in.swiggy.android:id/ratings_button")
+    @FindBy(id = "ratings_button")
     private WebElement ratingsButton;
 
-    @FindBy(id = "in.swiggy.android:id/delivery_button")
+    @FindBy(id = "delivery_button")
     private WebElement deliveryButton;
 
-    @FindBy(id = "in.swiggy.android:id/oneDollarButton")
+    @FindBy(id = "oneDollarButton")
     private WebElement affordable;
 
-    @FindBy(id = "in.swiggy.android:id/twoDollarButton")
+    @FindBy(id = "twoDollarButton")
     private WebElement average;
 
-    @FindBy(id = "in.swiggy.android:id/threeDollarButton")
+    @FindBy(id = "threeDollarButton")
     private WebElement costly;
 
-    @FindBy(id = "in.swiggy.android:id/fourDollarButton")
+    @FindBy(id = "fourDollarButton")
     private WebElement premium;
 
-    @FindBy(id = "//android.widget.ListView/android.widget.RelativeLayout[@index=2]")
+    @FindBy(id = "android.widget.RelativeLayout[@index=2]")
     private WebElement andhraCuisine;
 
-    @FindBy(id = "in.swiggy.android:id/filter_apply_button")
+    @FindBy(id = "filter_apply_button")
     private WebElement applyFilterButton;
 
     public FiltersPage(AppiumDriver driver) {

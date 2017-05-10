@@ -1,5 +1,6 @@
 package pages;
 
+import Exceptions.FoodItemNotAvailableException;
 import entities.FoodItem;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
@@ -13,34 +14,34 @@ public class RestaurantPage extends BasePage {
 
     private AppiumDriver driver;
 
-    @FindBy(id = "in.swiggy.android:id/fragment_restaurant_menu_layout_menu_items_recycler_view")
+    @FindBy(id = "fragment_restaurant_menu_layout_menu_items_recycler_view")
     private List<WebElement> menu;
 
-    @FindBy(id = "in.swiggy.android:id/recommended_menu_item_layout_item_name")
+    @FindBy(id = "recommended_menu_item_layout_item_name")
     private WebElement itemName;
 
-    @FindBy(id = "in.swiggy.android:id/recommended_menu_item_layout_item_price")
+    @FindBy(id = "recommended_menu_item_layout_item_price")
     private WebElement price;
 
-    @FindBy(id = "in.swiggy.android:id/count_text")
+    @FindBy(id = "count_text")
     private WebElement quantity;
 
-    @FindBy(id = "in.swiggy.android:id/decrement_button")
+    @FindBy(id = "decrement_button")
     private WebElement decrementButton;
 
-    @FindBy(id = "in.swiggy.android:id/increment_button")
+    @FindBy(id = "increment_button")
     private WebElement incrementButton;
 
-    @FindBy(id = "in.swiggy.android:id/expanded_restaurant_name")
+    @FindBy(id = "expanded_restaurant_name")
     private WebElement restaurantName;
 
-    @FindBy(id = "in.swiggy.android:id/expanded_restaurant_rating")
+    @FindBy(id = "expanded_restaurant_rating")
     private WebElement restaurantRating;
 
-    @FindBy(id = "in.swiggy.android:id/expanded_restaurant_delivery_time")
+    @FindBy(id = "expanded_restaurant_delivery_time")
     private WebElement restaurantDeliveryTime;
 
-    @FindBy(id = "in.swiggy.android:id/revealLayout")
+    @FindBy(id = "revealLayout")
     private WebElement checkoutButton;
 
     private FoodItem foodItem;
@@ -51,10 +52,10 @@ public class RestaurantPage extends BasePage {
         this.driver = driver;
     }
 
-    public void chooseAnItem() {
+    public void chooseAnItem() throws FoodItemNotAvailableException {
         waitForElementToBeVisible(restaurantName);
         scrollDown();
-        if(!driver.findElements(By.id("in.swiggy.android:id/recommended_menu_item_layout_item_out_of_stock_badge")).isEmpty()){
+        if (!driver.findElements(By.id("in.swiggy.android:id/recommended_menu_item_layout_item_out_of_stock_badge")).isEmpty()) {
             scrollDown();
         }
         System.out.println("Choosing a food item from menu");

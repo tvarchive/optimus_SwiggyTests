@@ -1,5 +1,6 @@
 package pages;
 
+import Exceptions.RestaurantUnavailableException;
 import entities.Restaurant;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
@@ -14,19 +15,19 @@ public class HomePage extends BasePage {
     private AppiumDriver driver;
     private Restaurant restaurant;
 
-    @FindBy(id = "in.swiggy.android:id/custom_toolbar_title_container")
+    @FindBy(id = "custom_toolbar_title_container")
     private WebElement customToolbar;
 
-    @FindBy(id = "in.swiggy.android:id/bottom_bar_option_account")
+    @FindBy(id = "bottom_bar_option_account")
     private WebElement accountButton;
 
-    @FindBy(id = "in.swiggy.android:id/bottom_bar_option_restaurants")
+    @FindBy(id = "bottom_bar_option_restaurants")
     private WebElement restaurantButton;
 
-    @FindBy(id = "in.swiggy.android:id/logout_login_button")
+    @FindBy(id = "logout_login_button")
     private WebElement login_logout_button;
 
-    @FindBy(id = "in.swiggy.android:id/activity_restaurant_filter_layout")
+    @FindBy(id = "activity_restaurant_filter_layout")
     private WebElement filter;
 
     public HomePage(AppiumDriver driver) {
@@ -53,7 +54,7 @@ public class HomePage extends BasePage {
 //        System.out.println("With delivery time -- " + restaurant.getDeliveryTime());
     }
 
-    public void tapOnRestaurant() {
+    public void tapOnRestaurant() throws RestaurantUnavailableException{
         try {
             waitForElementToBeVisible(By.id("in.swiggy.android:id/restaurant_layout"));
             driver.findElement(By.id("in.swiggy.android:id/restaurant_layout")).click();

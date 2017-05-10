@@ -9,10 +9,10 @@ public class DeliveryLocationPage extends BasePage {
 
     private AppiumDriver driver;
 
-    @FindBy(id = "in.swiggy.android:id/useManualSelectionBtnNewFlow")
+    @FindBy(id = "useManualSelectionBtnNewFlow")
     private WebElement enterLocation;
 
-    @FindBy(id = "in.swiggy.android:id/search_src_text")
+    @FindBy(id = "search_src_text")
     private WebElement deliveryLocation;
 
     @FindBy(xpath = "//android.widget.LinearLayout[@index=1]")
@@ -20,29 +20,36 @@ public class DeliveryLocationPage extends BasePage {
 
     private String deliveryType;
 
-    public DeliveryLocationPage() {
-
-    }
-
     public DeliveryLocationPage(AppiumDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     public void selectManualLocation() {
-        waitForElementToBeClickable(enterLocation);
-        enterLocation.click();
+        try {
+            waitForElementToBeClickable(enterLocation);
+            enterLocation.click();
+        } catch (Exception e) {
+
+        }
     }
 
-    public void enterDeliveryLocation(String location){
-        waitForElementToBeVisible(deliveryLocation);
-        deliveryLocation.sendKeys(location);
+    public void enterDeliveryLocation(String location) {
+        try {
+            waitForElementToBeVisible(deliveryLocation);
+            deliveryLocation.sendKeys(location);
+        } catch (Exception e) {
+
+        }
     }
 
-    public void selectAppropriateLocation(){
-        waitForElementToBeClickable(appropriateLocation);
-        appropriateLocation.click();
+    public void selectAppropriateLocation() {
+        try {
+            waitForElementToBeClickable(appropriateLocation);
+            appropriateLocation.click();
+        } catch (Exception e) {
+
+        }
     }
 
     public String getDeliveryType() {
