@@ -3,7 +3,7 @@ Feature: Selection of restaurant and food item by user
   As a user,I want to select a restaurant and choose a food item of my choice.
 
   Background:
-    Given I have chosen to order some food online and I provide my location for delivery as Rajajinagar
+    Given I have chosen to order some food online and I provide my location for delivery as rajajinagar
 
   @login-first-select-food-with-filter
   Scenario Outline: I login first,apply a filter, select a restaurant

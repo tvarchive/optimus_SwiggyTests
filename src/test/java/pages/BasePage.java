@@ -1,5 +1,6 @@
 package pages;
 
+import Exceptions.FoodItemNotAvailableException;
 import builders.FoodItemBuilder;
 import builders.RestaurantBuilder;
 import entities.FoodItem;
@@ -32,7 +33,7 @@ public class BasePage {
     @FindBy(id = "fragment_restaurant_menu_layout_menu_items_recycler_view")
     private List<WebElement> menu;
 
-    @FindBy(id = "permission_deny_button")
+    @FindBy(id = "com.android.packageinstaller:id/permission_deny_button")
     private WebElement permissionDenyButton;
 
     public BasePage(AppiumDriver driver) {
@@ -439,7 +440,7 @@ public class BasePage {
         return false;
     }
 
-    FoodItem selectAnItem(int count) {
+    FoodItem selectAnItem(int count) throws FoodItemNotAvailableException{
         WebElement foodItemEle = getFoodItem(count);
         waitForElementToBeClickable(Bys.incrementButton);
         findElement(foodItemEle, Bys.incrementButton).click();
