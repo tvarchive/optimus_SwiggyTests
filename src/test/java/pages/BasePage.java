@@ -1,6 +1,6 @@
 package pages;
 
-import Exceptions.FoodItemNotAvailableException;
+import exceptions.FoodItemNotAvailableException;
 import builders.FoodItemBuilder;
 import builders.RestaurantBuilder;
 import entities.FoodItem;

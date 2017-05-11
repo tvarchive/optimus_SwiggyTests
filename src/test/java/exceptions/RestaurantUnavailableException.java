@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 
 public class RestaurantUnavailableException extends RuntimeException {

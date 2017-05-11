@@ -27,7 +27,7 @@ public class ReviewOrderSteps extends BaseSteps {
         new ReviewOrderPage(getDriver()).proceedToPayment();
     }
 
-    @And("^I select my address and proceed to payment$")
+    @Then("^I should be able to select my address and proceed to payment$")
     public void iSelectMyDeliveryLocationAndProceedToPayment(){
         new ReviewOrderPage(getDriver()).tapOnDeliveryFeeOkButton();
         new ReviewOrderPage(getDriver()).selectAddress();

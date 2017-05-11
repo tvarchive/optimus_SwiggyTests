@@ -1,6 +1,6 @@
 package steps;
 
-import cucumber.api.java.en.And;
+import cucumber.api.java.en.When;
 import io.appium.java_client.AppiumDriver;
 import pages.HomePage;
 import pages.ReviewOrderPage;
@@ -11,7 +11,7 @@ public class LoginSteps extends BaseSteps{
         return getDriverInstanceFor("foodie");
     }
 
-    @And("^I login first as a valid registered user with phone number as ([^\"]*) and password as ([^\"]*)")
+    @When("^I login as a valid registered user with phone number as ([^\"]*) and password as ([^\"]*)")
     public void iLoginFirstAsAValidRegisteredUserWithPhoneNumberAndPasswordAs(String phoneNumber,String password){
         new HomePage(getDriver()).tapOnAccount();
         new HomePage(getDriver()).tapOnLoginLogoutButton();

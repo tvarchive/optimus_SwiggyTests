@@ -1,6 +1,6 @@
 package pages;
 
-import Exceptions.FoodItemNotAvailableException;
+import exceptions.FoodItemNotAvailableException;
 import entities.FoodItem;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
