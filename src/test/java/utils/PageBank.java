@@ -12,12 +12,15 @@ public class PageBank {
         pagesList = new ArrayList<>();
     }
 
-    public <T> void addPage(T t) {
+    public <T> T getPage(T t) {
+        try {
+            for (Object page : pagesList) {
+                if (page.getClass() == t.getClass())
+                    return (T) page;
+            }
+        } catch (Exception e) {}
         pagesList.add(t);
-    }
-
-    public <T> T getPage(Class<T> tClass) {
-        Optional<Object> object = pagesList.stream().filter(obj -> obj.getClass()==tClass).findFirst();
+        Optional<Object> object = pagesList.stream().filter(obj -> obj.getClass() == t.getClass()).findFirst();
         return (T) object.get();
     }
 }

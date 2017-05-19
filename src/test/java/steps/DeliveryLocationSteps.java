@@ -13,11 +13,10 @@ public class DeliveryLocationSteps extends BaseSteps {
     @Given("^I have chosen to order some food online and I provide my location for delivery as ([^\"]*)")
     public void iHaveChosenToOrderSomeFoodOnlineAndIProvideMyLocationForDeliveryAs(String deliveryLocation){
         DeliveryLocationPage deliveryLocationPage =  new DeliveryLocationPage(getDriver());
-        pageBank.addPage(deliveryLocationPage);
-        deliveryLocationPage.denyPermission();
-        deliveryLocationPage.selectManualLocation();
-        pageBank.getPage(DeliveryLocationPage.class).enterDeliveryLocation(deliveryLocation);
-        pageBank.getPage(DeliveryLocationPage.class).selectAppropriateLocation();
-        deliveryLocationPage.denyPermission();
+        pageBank.getPage(deliveryLocationPage).denyPermission();
+        pageBank.getPage(deliveryLocationPage).selectManualLocation();
+        pageBank.getPage(deliveryLocationPage).enterDeliveryLocation(deliveryLocation);
+        pageBank.getPage(deliveryLocationPage).selectAppropriateLocation();
+        pageBank.getPage(deliveryLocationPage).denyPermission();
     }
 }
